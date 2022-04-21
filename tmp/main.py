@@ -12,7 +12,7 @@
 # --style-image experiments/images/21styles/picasso_selfport1907.jpg --model experiments/models/21styles.model --content-size 256 
 # --output-image ./result.jpg
 
-# python main.py train --epochs 4 --style-folder images/mystyles/111.png --cuda 1
+# python main.py train --epochs 2 --style-folder images/mystyles --cuda 0 
 
 import os
 import sys
@@ -141,8 +141,6 @@ def train(args):
     utils.init_vgg16(args.vgg_model_dir)
 
     torch.save(vgg.state_dict(), os.path.join(args.vgg_model_dir, "vgg16.weight"))
-    #tmp = torch.load(os.path.join(args.vgg_model_dir, "vgg16.weight"))
-    #vgg.load_state_dict(tmp)
     # vgg.load_state_dict(torch.load(os.path.join(args.vgg_model_dir, "vgg16.weight")))
 
     if args.cuda:
@@ -219,25 +217,21 @@ def train(args):
                 # save model
                 style_model.eval()
                 style_model.cpu()
-                save_model_filename = "Epoch_" + str(e) + "iters_" + str(count) + "_" + \
-                    str(time.ctime()).replace(' ', '_') + "_" + str(
+                save_model_filename = "Epoch_" + str(e) + "iters_" + str(count) + "_" + str(
                     args.content_weight) + "_" + str(args.style_weight) + ".model"
-                save_model_path = os.path.join(args.save_model_dir, save_model_filename)
-                torch.save(style_model.state_dict(), save_model_path)
+                torch.save(style_model.state_dict(), save_model_filename)
                 style_model.train()
                 style_model.cuda()
-                tbar.set_description("\nCheckpoint, trained model saved at", save_model_path)
+                tbar.set_description("\nCheckpoint, trained model saved at", save_model_filename)
 
     # save model
     style_model.eval()
     style_model.cpu()
-    save_model_filename = "Final_epoch_" + str(args.epochs) + "_" + \
-        str(time.ctime()).replace(' ', '_') + "_" + str(
+    save_model_filename = "Final_epoch_" + str(args.epochs) + "_" + str(
         args.content_weight) + "_" + str(args.style_weight) + ".model"
-    save_model_path = os.path.join(args.save_model_dir, save_model_filename)
-    torch.save(style_model.state_dict(), save_model_path)
+    torch.save(style_model.state_dict(), save_model_filename)
 
-    print("\nDone, trained model saved at", save_model_path)
+    print("\nDone, trained model saved at", save_model_filename)
 
 
 def check_paths(args):
