@@ -1,6 +1,7 @@
 # Face swapping to painting
 
 Adapt from [hififace](https://github.com/mindslab-ai/hififace) and [MSG-Net](https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer)
+Code test in Windows. Requirement to be added later.
 
 ### Download pre-trained Model:
 Please download [hififace_opensouce_299999.ckpt](https://drive.google.com/file/d/1tZitaNRDaIDK1MPOaQJJn5CivnEIKMnB/view?usp=sharing) and [ms1mv3_arcface_r100_fp16_backbone.pth](https://1drv.ms/u/s!AswpsDO2toNKq0lWY69vN58GR6mw?e=p9Ov5d)  and store in this floder
@@ -27,7 +28,7 @@ python MSG_main.py eval --content-image assets/result/result.png \
 --style-image assets/21styles/picasso_selfport1907.jpg --model models/21styles.model --content-size 256 \
 --output-image assets/result/transfer_result.png
 ```
-Pre-trained style stored in `assets/21styles`
+Pre-trained style stored in `assets/21styles` \
 More pre-trained (on our dataset) to be added later
 
 
