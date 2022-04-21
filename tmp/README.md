@@ -4,7 +4,7 @@ cd models
 wget http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/vgg16.t7
 cd ..
 ```
-If run with `cuda` 
+### If run with `cuda` 
 ```bash 
 python main.py train --epochs 2 --style-folder images/mystyles --cuda 1
 ```
@@ -13,7 +13,7 @@ on `utils.pt` line `131`
 style = style.cuda()  # 保留这一行
 ```
 
-If run without `cuda`
+### If run without `cuda`
 ```bash
 python main.py train --epochs 2 --style-folder images/mystyles --cuda 0
 ```
