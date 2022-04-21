@@ -122,7 +122,7 @@ def train(args):
     else:
         kwargs = {}
 
-    transform = transforms.Compose([transforms.Scale(args.image_size),
+    transform = transforms.Compose([transforms.Resize(args.image_size),
                                     transforms.CenterCrop(args.image_size),
                                     transforms.ToTensor(),
                                     transforms.Lambda(lambda x: x.mul(255))])
