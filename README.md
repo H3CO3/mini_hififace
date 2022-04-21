@@ -1,4 +1,4 @@
-# mini_hififace
+# Face swapping to painting
 
 Adapt from [hififace](https://github.com/mindslab-ai/hififace) and [MSG-Net](https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer)
 
