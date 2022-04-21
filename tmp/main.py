@@ -8,9 +8,8 @@
 ## LICENSE file in the root directory of this source tree 
 ##+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# python experiments/main.py eval --content-image experiments/images/content/01_result.png 
-# --style-image experiments/images/21styles/picasso_selfport1907.jpg --model experiments/models/21styles.model --content-size 256 
-# --output-image ./result.jpg
+# python main.py eval --output-image ./result.jpg --content-image images/content/01_result.png 
+# --model models/21styles.model --content-size 256 --style-image images/21styles/120.png
 
 # python main.py train --epochs 2 --style-folder images/mystyles --cuda 0 
 
@@ -133,7 +132,7 @@ def train(args):
     if args.resume is not None:
         print('Resuming, initializing using weight from {}.'.format(args.resume))
         style_model.load_state_dict(torch.load(args.resume))
-    print(style_model)
+    # print(style_model)
     optimizer = Adam(style_model.parameters(), args.lr)
     mse_loss = torch.nn.MSELoss()
 
@@ -150,11 +149,13 @@ def train(args):
     style_loader = utils.StyleLoader(args.style_folder, args.style_size)
 
     tbar = trange(args.epochs)
+
     for e in tbar:
         style_model.train()
         agg_content_loss = 0.
         agg_style_loss = 0.
         count = 0
+
         for batch_id, (x, _) in enumerate(train_loader):
             n_batch = len(x)
             count += n_batch
@@ -162,7 +163,6 @@ def train(args):
             x = Variable(utils.preprocess_batch(x))
             if args.cuda:
                 x = x.cuda()
-
             style_v = style_loader.get(batch_id)
             if args.cuda:
                 style_v.cuda()
@@ -182,7 +182,6 @@ def train(args):
 
             features_y = vgg(y)
             features_xc = vgg(xc)
-
             f_xc_c = Variable(features_xc[1].data, requires_grad=False)
 
             content_loss = args.content_weight * mse_loss(features_y[1], f_xc_c)
@@ -190,7 +189,9 @@ def train(args):
             style_loss = 0.
             for m in range(len(features_y)):
                 gram_y = utils.gram_matrix(features_y[m])
-                gram_s = Variable(gram_style[m].data, requires_grad=False).repeat(args.batch_size, 1, 1, 1)
+                gram_s = gram_style[m].data.repeat(args.batch_size, 1, 1)
+                # gram_s = Variable(gram_style[m].data, requires_grad=False).repeat(args.batch_size, 1, 1, 1)
+
                 style_loss += args.style_weight * mse_loss(gram_y, gram_s[:n_batch, :, :])
 
             total_loss = content_loss + style_loss
