@@ -1,5 +1,6 @@
 Just a folder for debug. Will be delete later
 ```bash
+mkdir models
 cd models
 # That should run but something unexpected happend 
 # wget http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/vgg16.t7
