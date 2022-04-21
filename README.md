@@ -1,4 +1,4 @@
-# Face swapping to painting
+# Face Swapping to Painting
 
 Adapt from [hififace](https://github.com/mindslab-ai/hififace) and [MSG-Net](https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer) \
 Code test in Windows. Requirement to be added later.
