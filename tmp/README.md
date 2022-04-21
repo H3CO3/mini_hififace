@@ -1,6 +1,8 @@
 Just a folder for debug. Will be delete later
 ```bash
 cd models
+# That should run but something unexpected happend 
+# http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/vgg16.t7
 gdown https://drive.google.com/u/0/uc?id=11chrsuc8QRYFwtwh1CFtlgE5nRQ0Jwpw
 cd ..
 ```
