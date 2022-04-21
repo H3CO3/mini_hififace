@@ -1,7 +1,7 @@
 Just a folder for debug. Will be delete later
 ```bash
 cd models
-gdown https://drive.google.com/u/0/uc?id=11chrsuc8QRYFwtwh1CFtlgE5nRQ0Jwpw&export=download
+gdown https://drive.google.com/u/0/uc?id=11chrsuc8QRYFwtwh1CFtlgE5nRQ0Jwpw
 cd ..
 ```
 ### If run with `cuda` 
