@@ -1,7 +1,7 @@
 Just a folder for debug. Will be delete later
 ```bash
 cd models
-wget https://drive.google.com/file/d/11chrsuc8QRYFwtwh1CFtlgE5nRQ0Jwpw/view?usp=sharing
+wget https://drive.google.com/file/d/11chrsuc8QRYFwtwh1CFtlgE5nRQ0Jwpw
 cd ..
 ```
 ### If run with `cuda` 
