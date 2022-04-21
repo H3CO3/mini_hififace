@@ -1,7 +1,7 @@
 Just a folder for debug. Will be delete later
 ```bash
 cd models
-wget http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/vgg16.t7
+wget https://drive.google.com/file/d/11chrsuc8QRYFwtwh1CFtlgE5nRQ0Jwpw/view?usp=sharing
 cd ..
 ```
 ### If run with `cuda` 
