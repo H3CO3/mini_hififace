@@ -1,4 +1,4 @@
-Just a folder for debug. Will be delete later
+Just a folder for debug. Will be delete later.
 ```bash
 mkdir models
 cd models
